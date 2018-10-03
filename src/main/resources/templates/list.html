@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+     <!--<head th:fragment="commons/head :: headhtml">-->
+         <head>
+          <meta charset="UTF-8"/>
+          <title>秒杀商品列表</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <!-- 引入 Bootstrap -->
+         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+           <style type="text/css">
+             body{
+                 background-color: #1eee93;
+             }
+             .table th, .table td {
+                 text-align: center;
+                 vertical-align: middle!important;
+             }
+         </style>
+     </head>
+     <body>
+         <!--页面显示部分-->
+         <div class="container" style="margin-top: 40px">
+             <div class="panel panel-primary">
+                   <div class="panel-heading text-center">
+                       <h2>秒杀列表</h2>
+                   </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                             <thead>
+                                   <tr>
+                                         <th>名称</th>
+                                         <th>存库</th>
+                                         <th>开始时间</th>
+                                          <th>结束时间</th>
+                                          <th>创建时间</th>
+                                          <th>详情页</th>
+                                   </tr>
+                             </thead>
+                             <tbody th:each="seckill:${seckillList}">
+                                    <tr>
+                                        <td><span th:text="${seckill.name}"></span></td>
+                                        <td><span th:text="${seckill.number}"></span></td>
+                                        <td><span th:text="${#dates.format(seckill.startTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                        <td><span th:text="${#dates.format(seckill.endTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                        <td><span th:text="${#dates.format(seckill.createTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                        <td>
+                                            <a  th:href="'/secKill/'+${seckill.seckillId}+'/detail'" style="color: #2733dc"> more...</a>
+                                        </td>
+                                    </tr>
+                             </tbody>
+                        </table>
+                    </div>
+             </div>
+         </div>
+     </body>
+     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</html>
