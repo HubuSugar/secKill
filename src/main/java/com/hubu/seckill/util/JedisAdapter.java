@@ -17,6 +17,8 @@ import redis.clients.jedis.JedisPoolConfig;
 public class JedisAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(JedisAdapter.class);
+    
+    private static final String ADDRESS = "**.**.**.**";
 
      //jedis连接池，相当于数据库连接池
      private static volatile JedisPool jedisPool;
@@ -34,7 +36,7 @@ public class JedisAdapter {
         //设置最大连接数
         config.setMaxTotal(100);
          //创建连接池
-        jedisPool = new JedisPool(config,"47.106.225.58",6379);
+        jedisPool = new JedisPool(config,ADDRESS,6379);
     }
 
      //初始化连接池
